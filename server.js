@@ -14,4 +14,6 @@ client
   .then(() => console.log("Database connected successfully"))
   .catch((err) => console.error("Database connection error:", err));
 
+app.get("/", (req, res) => res.status(200).json({ message: "Hello" }));
+
 app.listen(PORT, () => console.log(`Server is running on port ${PORT}`));
