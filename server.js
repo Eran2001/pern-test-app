@@ -1,6 +1,7 @@
 import express from "express";
 import "dotenv/config";
 import client from "./db/db.js";
+import userRoute from "./controllers/userController.js";
 
 const app = express();
 const PORT = process.env.PORT;
@@ -14,6 +15,6 @@ client
   .then(() => console.log("Database connected successfully"))
   .catch((err) => console.error("Database connection error:", err));
 
-app.get("/", (req, res) => res.status(200).json({ message: "Hello" }));
+app.use("/api/users/", userRoute);
 
 app.listen(PORT, () => console.log(`Server is running on port ${PORT}`));
